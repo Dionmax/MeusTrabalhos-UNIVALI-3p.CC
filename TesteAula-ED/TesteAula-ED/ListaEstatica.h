@@ -5,6 +5,8 @@
 
 using namespace std;
 
+const int TAMANHO_MAXIMO = 52;
+
 struct Baralho
 {
 	int numeroCartas;
@@ -13,6 +15,7 @@ struct Baralho
 
 struct ListaDeCartas
 {
-	Baralho quantidadeDeCartas;
+	Baralho cartas[TAMANHO_MAXIMO];
+	int quantidadeDeCartas;
 };
 
