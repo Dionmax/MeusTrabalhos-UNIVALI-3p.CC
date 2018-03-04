@@ -7,10 +7,10 @@ using namespace std;
 
 const int TAMANHO_MAXIMO = 52;
 
-#define COPAS
-#define OUROS
-#define PAUS
-#define ESPADAS
+#define COPAS "copas"
+#define OUROS "ouros"
+#define PAUS "paus"
+#define ESPADAS "espadas"
 
 struct Baralho
 {
