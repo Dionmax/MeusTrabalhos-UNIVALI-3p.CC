@@ -26,7 +26,7 @@ struct ListaDeCartas
 
 void inicializarListaDeCartas(ListaDeCartas &lista)
 {
-	lista.quantidadeDeCartas = 1;
+	lista.quantidadeDeCartas = 0;
 }
 
 bool verificarEspacosLivres(ListaDeCartas lista)
@@ -145,7 +145,7 @@ void imprimirListaDeCartas(ListaDeCartas lista)
 	for (int indice = 0; indice < lista.quantidadeDeCartas; indice++)
 	{
 		cout << lista.cartas[indice].naipeCartas
-			<< "-" <<
-			lista.cartas[indice].numeroCartas;
+			<< " => " <<
+			lista.cartas[indice].numeroCartas << endl;
 	}
 }
