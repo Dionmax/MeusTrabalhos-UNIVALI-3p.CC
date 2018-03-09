@@ -44,7 +44,7 @@ public class Circulo
     }    
 }
 
-class programa
+class Programa
 {
     public static void main()
     {
