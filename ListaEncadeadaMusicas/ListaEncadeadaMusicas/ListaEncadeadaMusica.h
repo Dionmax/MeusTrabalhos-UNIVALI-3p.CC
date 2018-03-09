@@ -30,14 +30,22 @@ void inicializar(Playlist & lista)
 	lista.quantidade = 0;
 }
 
-void insirirInicioDaPlaylistEscadeada(Playlist & lista, ListaMusicas musica)
+bool insirirInicioDaPlaylistEscadeada(Playlist & lista, ListaMusicas musica)
 {
+	bool EspacoLivre = false;
+
 	Elemento * novo = new Elemento;
 
 	novo->musica = musica;
-	novo->proxima = NULL;
+
+	if (novo != NULL)
+		EspacoLivre = true;
+
+	novo->proxima = lista.inicio;
 
 	lista.inicio = novo;
 	lista.quantidade++;
+
+	return EspacoLivre;
 }
 
