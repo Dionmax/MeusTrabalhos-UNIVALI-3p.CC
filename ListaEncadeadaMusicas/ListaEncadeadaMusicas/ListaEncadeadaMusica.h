@@ -32,14 +32,14 @@ void inicializar(Playlist & lista)
 
 bool insirirInicioDaPlaylistEscadeada(Playlist & lista, ListaMusicas musica)
 {
-	bool EspacoLivre = true;
+	bool espacoLivre = true;
 
 	Elemento * novo = new Elemento;
 
 	novo->musica = musica;
 
 	if (novo == NULL)
-		EspacoLivre = false;
+		espacoLivre = false;
 	else
 	{
 		novo->proxima = lista.inicio;
@@ -47,12 +47,12 @@ bool insirirInicioDaPlaylistEscadeada(Playlist & lista, ListaMusicas musica)
 		lista.quantidade++;
 	}
 
-	return EspacoLivre;
+	return espacoLivre;
 }
 
 bool insirirFinalDaLista(Playlist & lista, ListaMusicas musica)
 {
-	bool EspacoLivre = true;
+	bool espacoLivre = true;
 
 	if (lista.quantidade == 0)
 		insirirInicioDaPlaylistEscadeada(lista, musica);
@@ -60,7 +60,7 @@ bool insirirFinalDaLista(Playlist & lista, ListaMusicas musica)
 	Elemento * novo = new Elemento;
 
 	if (novo == NULL)
-		EspacoLivre = false;
+		espacoLivre = false;
 	else
 	{
 		novo->musica = musica;
@@ -78,11 +78,33 @@ bool insirirFinalDaLista(Playlist & lista, ListaMusicas musica)
 		lista.quantidade++;
 	}
 
-	return EspacoLivre;
+	return espacoLivre;
 }
 
 bool removerInicioPlaylistEncadeada(Playlist & lista, ListaMusicas musica)
 {
+	bool espacoLivre = true;
 
+	Elemento * GuardarPrimeiraPosicao;
+
+	if (lista.quantidade == 0)
+		espacoLivre = false;
+	else
+	{
+		GuardarPrimeiraPosicao = lista.inicio;
+
+		lista.inicio = GuardarPrimeiraPosicao->proxima;
+
+		delete GuardarPrimeiraPosicao;
+
+		lista.quantidade--;
+	}
+
+	return espacoLivre;
+}
+
+bool removerFimDaLista(Playlist & lista, ListaMusicas musica)
+{
+	//fazer em casa;
 }
 
