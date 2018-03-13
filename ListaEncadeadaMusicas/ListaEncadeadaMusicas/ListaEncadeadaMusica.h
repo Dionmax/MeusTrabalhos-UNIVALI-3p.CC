@@ -105,6 +105,38 @@ bool removerInicioPlaylistEncadeada(Playlist & lista, ListaMusicas musica)
 
 bool removerFimDaLista(Playlist & lista, ListaMusicas musica)
 {
-	//fazer em casa;
+	bool espacoLivre = true,
+		achou = false;
+
+	Elemento * ultimo = new Elemento,
+		*penultimo = new Elemento;
+
+	if (lista.quantidade == 0)
+		insirirInicioDaPlaylistEscadeada(lista, musica);
+
+
+	ultimo = lista.inicio;
+
+	if (ultimo == NULL)
+		espacoLivre = false;
+	else
+	{
+		do {
+			
+			penultimo = ultimo;
+
+			if (ultimo->proxima != NULL)
+				ultimo = ultimo->proxima;
+			else
+				achou = true;
+
+		} while (!achou);
+
+		penultimo->proxima = NULL;
+
+		delete ultimo;
+	}
+
+	return espacoLivre;
 }
 
