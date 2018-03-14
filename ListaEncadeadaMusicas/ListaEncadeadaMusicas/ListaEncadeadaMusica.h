@@ -135,6 +135,8 @@ bool removerFimDaLista(Playlist & lista, ListaMusicas musica)
 		penultimo->proxima = NULL;
 
 		delete ultimo;
+
+		lista.quantidade--;
 	}
 
 	return espacoLivre;
