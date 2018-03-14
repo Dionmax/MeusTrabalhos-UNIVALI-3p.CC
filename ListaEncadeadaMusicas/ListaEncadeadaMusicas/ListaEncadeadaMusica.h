@@ -142,3 +142,16 @@ bool removerFimDaLista(Playlist & lista, ListaMusicas musica)
 	return espacoLivre;
 }
 
+void imprimirListaEncadeada(Playlist lista)
+{
+	Elemento * comecoLista;
+
+	while (comecoLista->proxima != NULL)
+	{
+		cout << comecoLista->musica.artista << endl;
+		cout << comecoLista->musica.titulo << endl;
+
+		comecoLista = comecoLista->proxima;
+	}
+}
+
