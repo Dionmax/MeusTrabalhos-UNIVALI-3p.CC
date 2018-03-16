@@ -9,38 +9,38 @@ public class Circulo
         cor = "red";
     }
     
-    public Circulo(double r)
+    public Circulo(double raio)
     {
-        raio = r;
+        this.raio = raio;
     }
     
-    public Circulo(String c)
+    public Circulo(String cor)
     {
-        if(verificarCorValida(c))
-            cor = c;
+        if(verificarCorValida(cor))
+            this.cor = cor;
     }
     
-    public Circulo(double r, String c)
+    public Circulo(double raio, String cor)
     {
-        raio = r;
+        this.raio = raio;
         
-        if(verificarCorValida(c))
-            cor = c;
+        if(verificarCorValida(cor))
+            this.cor = cor;
     }
     
-    private Boolean verificarCorValida(String c)
+    private Boolean verificarCorValida(String cor)
     {
         Boolean verificacao = false;
         
-        if(c.equalsIgnoreCase("red")|| c.equalsIgnoreCase("blue") || c.equalsIgnoreCase("green"))
+        if(cor.equalsIgnoreCase("red")|| cor.equalsIgnoreCase("blue") || cor.equalsIgnoreCase("green"))
             verificacao = true;
         
         return verificacao;
     }
     
-    public double getArea(double r)   
+    public double getArea(double raio)   
     {
-        return r * r * Math.PI;
+        return raio * raio * Math.PI;
     }    
 }
 
