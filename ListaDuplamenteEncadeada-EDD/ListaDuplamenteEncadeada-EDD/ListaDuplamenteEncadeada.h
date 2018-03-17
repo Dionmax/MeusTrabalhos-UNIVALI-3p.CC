@@ -54,11 +54,11 @@ bool inserirInicioDaListaDE(ListaDE &lista, ListaMusica musica)
 		else
 			lista.inicio->proximo->anterior = novo;
 
-			lista.quantiadade++;
+		lista.quantiadade++;
 	}
 	else
 		espacoLivre = false;
-	
+
 	return espacoLivre;
 }
 
@@ -90,3 +90,58 @@ bool inserirFimDaListaDE(ListaDE &lista, ListaMusica musica)
 	return espacoLivre;
 }
 
+bool removerInicioDaListaED(ListaDE &lista, ListaMusica musica)
+{
+	bool verificacao = true;
+
+	if (lista.quantiadade != 0)
+	{
+		ElementoDE *aux_save = new ElementoDE;
+
+		aux_save = lista.inicio;
+
+		lista.inicio = lista.inicio->proximo;
+
+		delete aux_save;
+
+		if (lista.quantiadade > 1)
+			lista.inicio->anterior = NULL;
+
+		lista.quantiadade--;
+	}
+	else
+	{
+		verificacao = false;
+		lista.fim = NULL;
+	}
+
+	return verificacao;
+}
+
+
+bool removerFimDaListaED(ListaDE &lista, ListaMusica musica)
+{
+	bool verificacao = true;
+
+	if (lista.quantiadade != 0)
+	{
+		ElementoDE *aux_ultimo;
+
+		aux_ultimo = lista.fim;
+
+		lista.fim = aux_ultimo->anterior;
+
+		delete aux_ultimo;
+
+		if (lista.quantiadade > 1)
+			lista.fim->proximo = NULL;
+		else
+			lista.inicio = NULL;
+
+		lista.quantiadade--;
+	}
+	else
+		verificacao = false;
+
+	return verificacao;
+}
