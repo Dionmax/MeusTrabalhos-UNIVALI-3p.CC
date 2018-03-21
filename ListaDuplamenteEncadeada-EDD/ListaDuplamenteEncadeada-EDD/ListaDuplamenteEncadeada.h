@@ -145,3 +145,8 @@ bool removerFimDaListaED(ListaDE &lista, ListaMusica musica)
 
 	return verificacao;
 }
+
+bool inserirNaPosicaListaDE(ListaDE &lista, ListaMusica musica, int posicao)
+{
+	bool 
+}
