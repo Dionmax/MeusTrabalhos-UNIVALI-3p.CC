@@ -50,17 +50,18 @@ bool insirirInicioDaPlaylistEscadeada(Playlist & lista, ListaMusicas musica)
 	return espacoLivre;
 }
 
-bool insirirFinalDaLista(Playlist & lista, ListaMusicas musica)
+bool insirirFinalDaLista(Playlist &lista, ListaMusicas musica)
 {
 	bool espacoLivre = true;
 
 	if (lista.quantidade == 0)
 		insirirInicioDaPlaylistEscadeada(lista, musica);
 
-	Elemento * novo = new Elemento;
+	Elemento *novo = new Elemento;
 
 	novo->musica = musica;
-	
+	novo->proxima = NULL;
+
 
 	if (novo == NULL)
 		espacoLivre = false;
@@ -73,12 +74,12 @@ bool insirirFinalDaLista(Playlist & lista, ListaMusicas musica)
 		while (ultimo->proxima != NULL)
 			ultimo = ultimo->proxima;
 
+		//lista.inicio->proxima = novo;
+
 		ultimo->proxima = novo;
 
 		lista.quantidade++;
 	}
-
-	novo->proxima = NULL;
 
 	return espacoLivre;
 }
@@ -119,7 +120,7 @@ bool removerFimDaLista(Playlist & lista)
 	else
 	{
 		do {
-			
+
 			penultimo = ultimo;
 
 			if (ultimo->proxima != NULL)
@@ -145,13 +146,20 @@ void imprimirListaEncadeada(Playlist lista)
 
 	comecoLista = lista.inicio;
 
-	do
+	for (int indice = 0; indice < lista.quantidade; indice++)
+	{
+		cout << comecoLista->musica.artista << " -- ";
+		cout << comecoLista->musica.titulo << endl;
+		comecoLista = comecoLista->proxima;
+	}
+
+	/*do
 	{
 		cout << comecoLista->musica.artista << " -- ";
 		cout << comecoLista->musica.titulo << endl;
 
 		comecoLista = comecoLista->proxima;
-	} while (comecoLista->proxima != NULL);
-	
+	} while (comecoLista->proxima != NULL);*/
+
 }
 
