@@ -59,7 +59,7 @@ bool pop(Pilha<T> &torreP)
 	{
 		aux = torreP.topo;
 
-		torreP.topo = aux.debaixo;
+		torreP.topo = aux->debaixo;
 
 		delete aux;
 
@@ -71,3 +71,17 @@ bool pop(Pilha<T> &torreP)
 	return verificacao;
 }
 
+template<typename T>
+void imprimirPilha(Pilha <T> &pilha)
+{
+	ElementoP<T> *aux;
+
+	aux = pilha.topo;
+
+	for (int indice = 0; indice < pilha.quantidade; indice++)
+	{
+		cout << aux->objeto << endl;
+
+		aux = aux->debaixo;
+	}
+}
