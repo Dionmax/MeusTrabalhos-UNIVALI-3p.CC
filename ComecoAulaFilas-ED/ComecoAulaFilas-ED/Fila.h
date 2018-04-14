@@ -20,7 +20,7 @@ struct TFila
 };
 
 template<typename T>
-void inicializarFila(TFila<T> fila)
+void inicializarFila(TFila<T> &fila)
 {
 	fila.inicio = NULL;
 	fila.fim = NULL;
@@ -28,7 +28,7 @@ void inicializarFila(TFila<T> fila)
 }
 
 template<typename T>
-bool enfileirar(TFila<T> fila, T obj)
+bool enfileirar(TFila<T> &fila, T obj)
 {
 	bool verificacao = false;
 
@@ -41,11 +41,35 @@ bool enfileirar(TFila<T> fila, T obj)
 
 	novo->proximo = NULL;
 
-	fila.fim->proximo = novo;
-
-	fila.fim = novo;
+	if (fila.quantidade > 0)
+		fila.fim->proximo = novo;
+	else
+		fila.fim = novo;
 
 	fila.quantidade++;
 
 	return verificacao;
+}
+
+template<typename T>
+bool enfileirar(TFila<T> &fila)
+{
+	bool verificacao = true;
+	ElementoF<T> *aux;
+
+	aux = fila.inicio;
+
+	if (fila.quantidade == 0)
+		verificacao = false;
+	else
+	{
+		fila.inicio = fila.inicio->proximo;
+
+		delete aux;
+
+		if (fila.quantidade == 1)
+			fila.fim = NULL;
+
+		fila.quantidade--;
+	}
 }
