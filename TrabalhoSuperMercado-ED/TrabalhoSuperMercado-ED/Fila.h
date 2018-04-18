@@ -4,6 +4,11 @@
 
 using namespace std;
 
+struct Cliente
+{
+	int tempo;
+};
+
 template<typename T>
 struct ElementoF
 {
