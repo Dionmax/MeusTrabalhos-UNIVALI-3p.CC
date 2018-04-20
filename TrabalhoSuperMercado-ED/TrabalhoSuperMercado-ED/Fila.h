@@ -49,7 +49,8 @@ bool enfileirar(TFila<T> &fila, T obj)
 	if (fila.quantidade > 0)
 		fila.fim->proximo = novo;
 	else
-		fila.fim = novo;
+		fila.inicio = novo;
+	fila.fim = novo;
 
 	fila.quantidade++;
 
