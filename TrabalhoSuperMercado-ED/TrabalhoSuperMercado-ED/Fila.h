@@ -77,4 +77,6 @@ bool desenfileirar(TFila<T> &fila)
 
 		fila.quantidade--;
 	}
+
+	return verificacao;
 }
