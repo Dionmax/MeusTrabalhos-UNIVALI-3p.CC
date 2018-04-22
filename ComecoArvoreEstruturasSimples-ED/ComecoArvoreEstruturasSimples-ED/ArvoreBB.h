@@ -69,5 +69,9 @@ bool insirirABB_it(TABB<T> & arvore, int novoChave, T obj)
 		arvore.quantidade++;
 	}
 
+	aux_raiz = NULL;
+
+	delete aux_raiz;
+
 	return verificacao;
 }
