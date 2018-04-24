@@ -75,3 +75,53 @@ bool insirirABB_it(TABB<T> & arvore, int novoChave, T obj)
 
 	return verificacao;
 }
+
+template<typename T>
+TNodoABB<T> busca_recursiva_nodo(TNodoABB<T> *nodo, int chave)
+{
+	TNodoABB<T> *aux;
+
+	aux = nodo;
+
+	if (aux->chave < chave)
+		if (aux->menor == NULL)
+			return *aux;
+		else
+		{
+			aux = aux->menor;
+			busca_recursiva_nodo(aux, chave);
+		}
+	else
+		if (aux->maior == NULL)
+			return *aux;
+		else
+		{
+			aux = aux->maior;
+			busca_recursiva_nodo(aux,chave);
+		}
+
+	return *aux;;
+}
+
+template<typename T>
+bool insirir_funcional(TABB<T> & arvore, int novoChave, T obj)
+{
+	TNodoABB<T> *aux_raiz;
+
+	TNodoABB<T> *novo = new TNodoABB<T>;
+	novo->objeto = obj;
+	novo->maior = NULL;
+	novo->menor = NULL;
+	novo->chave = novoChave;
+
+	aux_raiz = arvore.raiz;
+
+	busca_recursiva_nodo(aux_raiz,novoChave);
+
+	if (aux_raiz->chave < novoChave)
+		aux_raiz->menor = novo;
+	else
+		aux_raiz->maior = novo;
+
+	return true;
+}
