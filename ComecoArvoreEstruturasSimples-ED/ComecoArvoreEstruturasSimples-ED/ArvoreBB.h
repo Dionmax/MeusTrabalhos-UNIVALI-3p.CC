@@ -134,5 +134,9 @@ bool insirir_funcional(TABB<T> & arvore, int novoChave, T obj)
 			aux_raiz->maior = novo;
 	}
 
+	aux_raiz = NULL;
+
+	delete aux_raiz;
+
 	return verificacao;
 }
