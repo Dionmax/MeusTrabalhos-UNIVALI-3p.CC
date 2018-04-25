@@ -106,6 +106,8 @@ TNodoABB<T> busca_recursiva_nodo(TNodoABB<T> *nodo, int chave)
 template<typename T>
 bool insirir_funcional(TABB<T> & arvore, int novoChave, T obj)
 {
+	bool verificacao = true;
+
 	TNodoABB<T> *aux_raiz;
 
 	TNodoABB<T> *novo = new TNodoABB<T>;
@@ -114,14 +116,23 @@ bool insirir_funcional(TABB<T> & arvore, int novoChave, T obj)
 	novo->menor = NULL;
 	novo->chave = novoChave;
 
-	aux_raiz = arvore.raiz;
 
-	busca_recursiva_nodo(aux_raiz,novoChave);
+	if (novo == NULL)
+		verificacao = false;
 
-	if (aux_raiz->chave < novoChave)
-		aux_raiz->menor = novo;
+	if (arvore.quantidade == 0)
+		arvore.raiz = novo;
 	else
-		aux_raiz->maior = novo;
+	{
+		aux_raiz = arvore.raiz;
 
-	return true;
+		busca_recursiva_nodo(aux_raiz, novoChave);
+
+		if (aux_raiz->chave < novoChave)
+			aux_raiz->menor = novo;
+		else
+			aux_raiz->maior = novo;
+	}
+
+	return verificacao;
 }
