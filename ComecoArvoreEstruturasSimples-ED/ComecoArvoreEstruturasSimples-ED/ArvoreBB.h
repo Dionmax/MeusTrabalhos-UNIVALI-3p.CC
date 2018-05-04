@@ -101,7 +101,7 @@ TNodoABB<T> busca_recursiva_nodo(TNodoABB<T> *nodo, int chave)
 			busca_recursiva_nodo(aux,chave);
 		}
 
-	return *aux;;
+	return *aux;
 }
 
 template<typename T>
