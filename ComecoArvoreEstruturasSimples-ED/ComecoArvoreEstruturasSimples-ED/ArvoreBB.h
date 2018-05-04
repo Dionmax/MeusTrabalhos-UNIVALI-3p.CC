@@ -84,6 +84,9 @@ TNodoABB<T> busca_recursiva_nodo(TNodoABB<T> *nodo, int chave)
 
 	aux = nodo;
 
+	if (nodo->chave == chave)
+		return *aux;
+
 	if (aux->chave < chave)
 		if (aux->menor == NULL)
 			return *aux;
@@ -133,8 +136,6 @@ bool inserir_funcional(TABB<T> & arvore, int novoChave, T obj)
 			aux_raiz->menor = novo;
 		else
 			aux_raiz->maior = novo;
-
-		
 	}
 
 	arvore.quantidade++;
