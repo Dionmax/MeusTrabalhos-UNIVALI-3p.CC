@@ -215,6 +215,12 @@ int buscaChave(TNodoABB<T> * nodo, T dado)
 }
 
 template<typename T>
+bool remocaoArvoreSimples()
+{
+
+}
+
+template<typename T>
 void infixa(TNodoABB<T> * nodo)
 {
 	if (nodo != NULL)
