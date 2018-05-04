@@ -80,7 +80,7 @@ void inicializarABB(TABB<T> & arvore)
 template<typename T>
 TNodoABB<T> busca_recursiva_nodo(TNodoABB<T> *nodo, int chave)
 {
-	TNodoABB<T> *aux;
+	TNodoABB<T> *aux, no_find;
 
 	aux = nodo;
 
@@ -101,10 +101,13 @@ TNodoABB<T> busca_recursiva_nodo(TNodoABB<T> *nodo, int chave)
 		else
 		{
 			aux = aux->maior;
-			busca_recursiva_nodo(aux,chave);
+			busca_recursiva_nodo(aux, chave);
 		}
 
-	return *aux;
+	//Solução -> Verificar o Objeto == NULL -> FALSE!
+	no_find.objeto = NULL;
+
+	return no_find;
 }
 
 template<typename T>
@@ -178,8 +181,8 @@ void busca_recursiva(TNodoABB<T> * nodo, int chave)
 		if (chave > nodo->chave)
 			return busca_recursiva(nodo->maior, chave);
 		else
-			return busca_recursiva(nodo->menor,chave);
-	}	
+			return busca_recursiva(nodo->menor, chave);
+	}
 }
 
 template<typename T>
@@ -190,7 +193,7 @@ int buscaChave_dois(TNodoABB<T> * nodo, T dado)
 		if (nodo->objeto == dado)
 			return nodo->chave;
 
-		return max(buscaChave(nodo->menor,dado), buscaChave(nodo->maior,dado));
+		return max(buscaChave(nodo->menor, dado), buscaChave(nodo->maior, dado));
 	}
 
 	return -1;
@@ -209,7 +212,7 @@ int buscaChave(TNodoABB<T> * nodo, T dado)
 		if (resultado == 1)
 			resultado = buscaChave(nodo->maior, dado);
 
-		return resultado;		
+		return resultado;
 	}
 
 	return -1;
