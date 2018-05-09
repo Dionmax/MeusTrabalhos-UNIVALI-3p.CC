@@ -78,14 +78,11 @@ void inicializarABB(TABB<T> & arvore)
 //}
 
 template<typename T>
-TNodoABB<T> busca_recursiva_nodo(TNodoABB<T> *nodo, int chave)
+TNodoABB<T> busca_recursiva_maior_nodo_com_chave(TNodoABB<T> *&nodo, int chave)
 {
 	TNodoABB<T> *aux, no_find;
 
 	aux = nodo;
-
-	if (nodo->chave == chave)
-		return *aux;
 
 	if (aux->chave < chave)
 		if (aux->menor == NULL)
@@ -93,7 +90,7 @@ TNodoABB<T> busca_recursiva_nodo(TNodoABB<T> *nodo, int chave)
 		else
 		{
 			aux = aux->menor;
-			busca_recursiva_nodo(aux, chave);
+			busca_recursiva_maior_nodo_com_chave(aux, chave);
 		}
 	else
 		if (aux->maior == NULL)
@@ -101,13 +98,10 @@ TNodoABB<T> busca_recursiva_nodo(TNodoABB<T> *nodo, int chave)
 		else
 		{
 			aux = aux->maior;
-			busca_recursiva_nodo(aux, chave);
+			busca_recursiva_maior_nodo_com_chave(aux, chave);
 		}
 
-	//Solução -> Verificar o Objeto == NULL -> FALSE!
-	no_find.objeto = NULL;
-
-	return no_find;
+	return *aux;
 }
 
 template<typename T>
@@ -133,7 +127,7 @@ bool inserir_funcional(TABB<T> & arvore, int novoChave, T obj)
 	{
 		aux_raiz = arvore.raiz;
 
-		busca_recursiva_nodo(aux_raiz, novoChave);
+		busca_recursiva_maior_nodo_com_chave(aux_raiz, novoChave);
 
 		if (aux_raiz->chave < novoChave)
 			aux_raiz->menor = novo;
@@ -200,7 +194,7 @@ int buscaChave_dois(TNodoABB<T> * nodo, T dado)
 }
 
 template<typename T>
-int buscaChave(TNodoABB<T> * nodo, T dado)
+int buscaChave(TNodoABB<T> *& nodo, T dado)
 {
 	if (dado != NULL && nodo != NULL)
 	{
@@ -219,9 +213,50 @@ int buscaChave(TNodoABB<T> * nodo, T dado)
 }
 
 template<typename T>
-bool remocaoArvoreSimples()
+void remocaoArvoreSimples(TNodoABB<T> *&nodo, int chave)
 {
+	TNodoABB<T> *mm = nodo->menor, *pai = NULL;
 
+	if (mm == NULL)
+	{
+		TNodoABB<T> *rem = nodo;
+		delete rem;
+		nodo = nodo->maior;
+		return;
+	}
+
+	while (mm->maior != NULL)
+	{
+		pai = mm;
+		mm = mm->maior;
+	}
+
+	mm->maior = nodo->maior;
+
+	if (pai != NULL)
+	{
+		pai->maior = mm->menor;
+		mm->menor = nodo->menor;
+	}
+	delete nodo;
+	nodo = mm;
+}
+
+template<typename T>
+bool encontrarRemove(TNodoABB<T> *&nodo, int chave)
+{
+	if (nodo == NULL)
+		return false;
+
+	if (chave == nodo->chave) {
+		remocaoArvoreSimples(nodo, chave);
+		return true;
+	}
+
+	if (chave > nodo->chave)
+		encontrarRemove(nodo->maior, chave);
+	else
+		encontrarRemove(nodo->menor, chave);
 }
 
 template<typename T>
