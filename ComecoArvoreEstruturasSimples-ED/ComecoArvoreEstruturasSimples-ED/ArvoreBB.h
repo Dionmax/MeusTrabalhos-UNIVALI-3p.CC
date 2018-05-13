@@ -78,68 +78,43 @@ void inicializarABB(TABB<T> & arvore)
 //}
 
 template<typename T>
-TNodoABB<T> busca_recursiva_maior_nodo_com_chave(TNodoABB<T> *&nodo, int chave)
-{
-	TNodoABB<T> *aux, no_find;
-
-	aux = nodo;
-
-	if (aux->chave < chave)
-		if (aux->menor == NULL)
-			return *aux;
-		else
-		{
-			aux = aux->menor;
-			busca_recursiva_maior_nodo_com_chave(aux, chave);
-		}
-	else
-		if (aux->maior == NULL)
-			return *aux;
-		else
-		{
-			aux = aux->maior;
-			busca_recursiva_maior_nodo_com_chave(aux, chave);
-		}
-
-	return *aux;
-}
-
-template<typename T>
-bool inserir_funcional(TABB<T> & arvore, int novoChave, T obj)
+bool inserir_recursivo(TNodoABB<T> *&nodo, int novoChave, T obj)
 {
 	bool verificacao = true;
 
-	TNodoABB<T> *aux_raiz;
+	TNodoABB<T> *aux_nodo;
 
 	TNodoABB<T> *novo = new TNodoABB<T>;
-	novo->objeto = obj;
-	novo->maior = NULL;
-	novo->menor = NULL;
-	novo->chave = novoChave;
-
 
 	if (novo == NULL)
-		verificacao = false;
+		return false;
 
-	if (arvore.quantidade == 0)
-		arvore.raiz = novo;
+	novo->objeto = obj;
+	novo->maior = novo->menor = NULL;
+	novo->chave = novoChave;
+
+	aux_nodo = nodo;
+
+	if (nodo == NULL)
+		nodo = novo;
 	else
 	{
-		aux_raiz = arvore.raiz;
-
-		busca_recursiva_maior_nodo_com_chave(aux_raiz, novoChave);
-
-		if (aux_raiz->chave < novoChave)
-			aux_raiz->menor = novo;
+		if (aux_nodo->chave == novoChave)
+			return false;
 		else
-			aux_raiz->maior = novo;
+		{
+			if (novoChave > aux_nodo->chave)
+				inserir_recursivo(aux_nodo->maior, novoChave, obj);
+			else
+				inserir_recursivo(aux_nodo->menor, novoChave, obj);
+		}
 	}
 
-	arvore.quantidade++;
+	//arvore.quantidade++;
 
-	aux_raiz = NULL;
+	aux_nodo = NULL;
 
-	delete aux_raiz;
+	delete aux_nodo;
 
 	return verificacao;
 }
