@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2037
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ComecoArvoreEstruturasSimples-ED", "ComecoArvoreEstruturasSimples-ED\ComecoArvoreEstruturasSimples-ED.vcxproj", "{1B4A6970-27EB-4602-8E82-937A558747DD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1B4A6970-27EB-4602-8E82-937A558747DD}.Debug|x64.ActiveCfg = Debug|x64
+		{1B4A6970-27EB-4602-8E82-937A558747DD}.Debug|x64.Build.0 = Debug|x64
+		{1B4A6970-27EB-4602-8E82-937A558747DD}.Debug|x86.ActiveCfg = Debug|Win32
+		{1B4A6970-27EB-4602-8E82-937A558747DD}.Debug|x86.Build.0 = Debug|Win32
+		{1B4A6970-27EB-4602-8E82-937A558747DD}.Release|x64.ActiveCfg = Release|x64
+		{1B4A6970-27EB-4602-8E82-937A558747DD}.Release|x64.Build.0 = Release|x64
+		{1B4A6970-27EB-4602-8E82-937A558747DD}.Release|x86.ActiveCfg = Release|Win32
+		{1B4A6970-27EB-4602-8E82-937A558747DD}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {32E21013-DA0B-402A-9A2F-A0E4C493BBE4}
+	EndGlobalSection
+EndGlobal
